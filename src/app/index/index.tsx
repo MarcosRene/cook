@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Alert, View, Text, ScrollView } from 'react-native'
 import { router } from 'expo-router'
 
@@ -29,11 +29,11 @@ export default function Index() {
   }
 
   function handleSearch() {
-    router.navigate('/recipes/')
+    router.navigate(`/recipes/${selected}`)
   }
 
-  useEffect(() => {
-    services.ingredients.findAll().then(setIngredients)
+  React.useEffect(() => {
+    services.ingredients.findAll().then((response) => setIngredients(response))
   }, [])
 
   return (
